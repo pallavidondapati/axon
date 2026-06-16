@@ -21,3 +21,5 @@ pdfplumber
 requests
 groq
 yfinance
+wikipedia
+newsapi-python
