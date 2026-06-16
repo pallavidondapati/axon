@@ -1,0 +1,8 @@
+.env
+__pycache__/
+*.pyc
+checkpoints.db
+faiss_index/
+data/
+models/
+*.png

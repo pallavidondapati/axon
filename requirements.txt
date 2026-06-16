@@ -1,0 +1,10 @@
+langchain
+langchain-community
+langchain-groq
+langgraph
+streamlit
+faiss-cpu
+pdfplumber
+yfinance
+requests
+python-dotenv
