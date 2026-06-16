@@ -26,12 +26,7 @@ import redis
 
 # ── env ───────────────────────────────────────────
 load_dotenv()
-
-try:
-    import streamlit as st
-    GROQ_API_KEY = st.secrets.get("GROQ_API_KEY") or os.getenv("GROQ_API_KEY")
-except Exception:
-    GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 LLM_MODEL = "llama-3.3-70b-versatile"
 
 # ── Redis cache (Distributed Systems) ────────────

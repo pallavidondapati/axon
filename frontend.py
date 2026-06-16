@@ -1,4 +1,9 @@
+# frontend.py — put this at the very top, before all other imports
 import streamlit as st
+import os
+for key, val in st.secrets.items():
+    os.environ[key] = str(val)
+
 import re
 import uuid
 from basic_chatbot import chatbot, retrieve_all_threads, llm
