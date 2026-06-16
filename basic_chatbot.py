@@ -9,7 +9,10 @@ from langchain_core.messages import BaseMessage
 from langchain_groq import ChatGroq
 from langgraph.graph import StateGraph, START, END
 from langgraph.graph.message import add_messages
-from langgraph.checkpoint.sqlite import SqliteSaver
+try:
+    from langgraph.checkpoint.sqlite import SqliteSaver
+except ImportError:
+    from langgraph.checkpoint.sqlite import SqliteSaver as SqliteSaver
 from langgraph.prebuilt import ToolNode, tools_condition
 
 from tools.weather_tool import get_weather
