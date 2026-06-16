@@ -44,13 +44,37 @@ llm = ChatGroq(api_key=GROQ_API_KEY, model=LLM_MODEL, streaming=True)
 tools = [get_weather, get_stock_price, calculator, wikipedia_search, get_news, debug_code]
 llm_with_tools = llm.bind_tools(tools)
 
+from langchain_core.messages import SystemMessage
+
 # ── Graph state ───────────────────────────────────
 class ChatState(TypedDict):
     messages: Annotated[list[BaseMessage], add_messages]
 
+# ── System prompt ─────────────────────────────────
+SYSTEM_PROMPT = SystemMessage(content="""You are MYagenT, a helpful AI assistant.
+
+CRITICAL RULE: When user asks for code, ALWAYS write the actual complete code first, then explain it briefly.
+Never just describe what the code does without showing it.
+
+Format code responses like this:
+\`\`\`python
+# actual working code here
+\`\`\`
+Then brief explanation below.
+
+Only use tools when explicitly needed:
+- get_weather: for weather queries
+- get_stock_price: for stock prices
+- calculator: for math
+- wikipedia_search: for factual lookups
+- get_news: for news
+- debug_code: for debugging existing code
+
+For all coding requests, write complete working code directly without using any tool.""")
+
 # ── chat node (sync — safe for Streamlit streaming) ──
 def chat_node(state: ChatState):
-    messages = state['messages']
+    messages = [SYSTEM_PROMPT] + state['messages']
     response = llm_with_tools.invoke(messages)
     return {'messages': [response]}
 
