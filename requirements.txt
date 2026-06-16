@@ -1,3 +1,4 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
 streamlit
 langchain
 langgraph
@@ -9,7 +10,6 @@ sentence-transformers
 langgraph-checkpoint-sqlite
 faiss-cpu
 torch
-torchvision
 gtts
 streamlit-audiorecorder
 SpeechRecognition
