@@ -3,7 +3,6 @@ import tempfile
 import speech_recognition as sr
 from gtts import gTTS
 from pydub import AudioSegment
-AudioSegment.converter = r"C:\Users\pallavi\Downloads\ffmpeg-8.1.1-essentials_build\ffmpeg-8.1.1-essentials_build\bin\ffmpeg.exe"
 
 def text_to_speech(text: str) -> bytes:
     """Convert text to speech and return audio bytes."""
