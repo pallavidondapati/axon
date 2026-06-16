@@ -66,8 +66,7 @@ def query_rag(question: str, llm) -> str:
 
     prompt = ChatPromptTemplate.from_template("""
     Answer the question based on the context below.
-    If you don't know the answer from the context, say so.
-
+    If you don't know the answer from the context, say so and if user asks another query which is not related to document answer it with your own knowledge only if it present in the document use the document or pdf data and answer based on it and lastly give that this answer was based on the document or pdf you have sent me
     Context: {context}
     Question: {question}
     Answer:""")

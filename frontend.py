@@ -1,9 +1,13 @@
-# frontend.py — put this at the very top, before all other imports
 import streamlit as st
 import os
-for key, val in st.secrets.items():
-    os.environ[key] = str(val)
 
+# load secrets into environment (Streamlit Cloud only)
+try:
+    if hasattr(st, 'secrets') and len(st.secrets) > 0:
+        for key, val in st.secrets.items():
+            os.environ[key] = str(val)
+except Exception:
+    pass  # local dev uses .env file instead
 import re
 import uuid
 from basic_chatbot import chatbot, retrieve_all_threads, llm
