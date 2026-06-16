@@ -20,3 +20,4 @@ pypdf
 pdfplumber
 requests
 groq
+yfinance
